@@ -1,0 +1,24 @@
+
+<div class="post-list">
+    <% page.posts.each(function (post) { %>
+    <div class="post">
+        <a class="post-link" href="<%- url_for(post.path) %>">
+            <div class="post-title"><%= post.title %></div>
+            <div class="post-except">
+                <%- strip_html(post.content).substr(0, 130) %> ...
+            </div>
+        </a>
+        <div class="post-meta-bottom">
+            <% if (post.tags && post.tags.length > 0) { %>
+                <div class="post-tags">
+                    <% post.tags.forEach(function(tag) { %>
+                        <a href="<%= url_for(tag.path) %>" class="tag-link"># <%= tag.name %></a>
+                    <% }); %>
+                </div>
+            <% } %>
+            <div class="post-date"><%- date(post.date, "YYYY年MM月DD日") %></div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+<%- partial('_partial/paginator') %>

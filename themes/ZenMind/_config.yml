@@ -1,0 +1,21 @@
+menu:
+  主页: /
+  归档: /archives
+  关于: /about
+  设备: /use
+  碎碎念: https://uhufoundme.sol.build/
+
+# Giscus评论系统
+giscus:
+  enable: true
+  repo: z1gui/blog
+  repo_id: R_kgDOOezL6g
+  category: Announcements
+  category_id: DIC_kwDOOezL6s4CvusN
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+  theme: noborder_gray
+  lang: zh-CN

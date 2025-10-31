@@ -1,0 +1,81 @@
+<div class="footer">
+    <!-- <div class="typewriter-container">
+        <span class="typewriter-text" id="typewriter"></span>
+        <span class="cursor">|</span>
+    </div> -->
+    <span>Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://github.com/z1gui"><%= config.author %></a></span>
+    <div class="footer-bottom">
+        <span>以<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> CC-BY-NC-SA 4.0 </a>许可发布</span>
+        
+            <!-- 页脚社交链接 -->
+    <div class="footer-social-links">
+        <a href="https://github.com/z1gui" target="_blank" title="GitHub" class="footer-social-icon">
+            <img src="/img/github.png" alt="GitHub"/>
+        </a>
+        <a href="https://t.me/z1gui" target="_blank" title="Telegram" class="footer-social-icon">
+            <img src="/img/Telegram.png" alt="Telegram"/>
+        </a>
+        <a href="mailto:leon6line@gmail.com" title="Email" class="footer-social-icon">
+            <img src="/img/mail.png" alt="Email"/>
+        </a>
+        <a href="/atom.xml" title="RSS Feed" class="footer-social-icon">
+            <img src="/img/rss-fill.png" alt="RSS Feed"/>
+        </a>
+    </div>
+    </div>
+</div>
+<%- css('css/a11y-dark.min.css') %>
+<%- js('js/highlight.min.js') %>
+<%- js('js/highlightjs-line-numbers.js') %>
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+<style>
+.heading-anchor {
+    position: absolute;
+    left: 0;
+    color: var(--font-color-3);
+    opacity: 0;
+    transition: opacity 0.3s, color 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.heading-anchor:hover {
+    color: var(--font-color-0);
+}
+
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor,
+h5:hover .heading-anchor,
+h6:hover .heading-anchor {
+    opacity: 1;
+}
+
+.copy-tooltip {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--font-color-1);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+</style>
+
+
