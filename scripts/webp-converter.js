@@ -65,11 +65,30 @@ hexo.extend.filter.register('after_render:html', function(str, data) {
 });
 
 // 处理静态资源文件，生成WebP版本
-hexo.extend.filter.register('before_generate', function() {
-  const publicDir = hexo.public_dir;
-  const imgDir = path.join(publicDir, 'img');
+// 首先在生成前处理 source/img，这样生成的 webp 会被 Hexo 自动复制到 public
+hexo.extend.filter.register('before_generate', async function() {
+  const sourceDir = hexo.source_dir;
+  const sourceImgDir = path.join(sourceDir, 'img');
   
-  return processImages(imgDir);
+  try {
+    await processImages(sourceImgDir);
+    console.log('✅ source/img 目录处理完成');
+  } catch (error) {
+    console.log('⚠️  处理 source/img 目录:', error.message || '目录不存在或已跳过');
+  }
+});
+
+// 在生成后再次检查 public/img，确保所有图片都有对应的 webp
+hexo.extend.filter.register('after_generate', async function() {
+  const publicDir = hexo.public_dir;
+  const publicImgDir = path.join(publicDir, 'img');
+  
+  try {
+    await processImages(publicImgDir);
+    console.log('✅ public/img 目录处理完成');
+  } catch (error) {
+    console.log('⚠️  处理 public/img 目录:', error.message || '目录不存在或已跳过');
+  }
 });
 
 async function processImages(dir) {
